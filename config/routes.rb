@@ -1,4 +1,6 @@
 Qinyan::Application.routes.draw do
+  # get "product/index"
+  resources :product
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
