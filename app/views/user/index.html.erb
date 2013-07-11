@@ -1,0 +1,9 @@
+<h1>注册</h1>
+<%= simple_form_for @user do |f| %>
+  <%= f.input :username, :label => '姓    名：' %>
+  <%= f.input :email, :label => '邮    箱：'  %>
+  <%= f.input :password, :label => '密    码：'  %>
+  <%= f.input :password_confirmation, :label => '确认密码：'%>
+  <br/>
+  <%= f.button :submit, '注册'%>
+<% end %>

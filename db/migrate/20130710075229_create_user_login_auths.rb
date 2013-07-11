@@ -1,6 +1,6 @@
 class CreateUserLoginAuths < ActiveRecord::Migration
   def change
-    create_table :user_login_auths do |t|
+    create_table(:user_login_auths, :force => true)  do |t|
       t.string :user_id
       t.string :site
       t.string :site_uid

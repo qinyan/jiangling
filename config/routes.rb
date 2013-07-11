@@ -1,4 +1,7 @@
 Qinyan::Application.routes.draw do
+
+  get 'join' => 'user#index', :as => 'users'
+  
   # get "product/index"
   resources :product
   # The priority is based upon order of creation:
