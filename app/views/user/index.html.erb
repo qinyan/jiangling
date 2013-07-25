@@ -1,9 +1,16 @@
-<h1>注册</h1>
-<%= simple_form_for @user do |f| %>
-  <%= f.input :username, :label => '姓    名：' %>
-  <%= f.input :email, :label => '邮    箱：'  %>
-  <%= f.input :password, :label => '密    码：'  %>
-  <%= f.input :password_confirmation, :label => '确认密码：'%>
-  <br/>
-  <%= f.button :submit, '注册'%>
+<style type="text/css">
+  .field_with_errors {
+    display: inline;
+  }
+  
+  .field_with_errors .message {
+    color: #D00;
+    padding-left: 5px;
+    font-size: 12px;
+  }
+</style>
+<%= form_for @user, :validations => true do |b| %>
+  <%= b.label :username %></br>
+  <%= b.text_field :username%></br>
+  <%= submit_tag 'Create' %>
 <% end %>

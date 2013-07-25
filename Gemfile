@@ -7,9 +7,12 @@ gem 'rails', '3.2.12'
 
 # db
 gem 'mysql2'
+gem 'jquery-rails'
 
 # form
 gem 'simple_form'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 
 
 # Gems used only for assets and not required
