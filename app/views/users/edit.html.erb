@@ -9,23 +9,23 @@
     font-size: 12px;
   }
 </style>
-<%= form_for @user,:url =>'/user', :validate => true do |f| %>
+<h1>修改用户信息</h2>
+<%= form_for @user, :validate => true do |f| %>
   <p>
-    <%= f.label :username %></br>
+    <%= f.label :username, '用户姓名：' %>
     <%= f.text_field :username%></br>
   </p>
   <p>
-    <%= f.label :email, "Email Address" %></br>
+    <%= f.label :email, '邮箱号码：' %>
     <%= f.text_field :email%></br>
   </p>
   <p>
-    <%= f.label :password %></br>
+    <%= f.label :password, '设置密码：' %>
     <%= f.password_field :password%></br>
   </p>
   <p>
-    <%= f.label :password_confirmation, "confirm password" %></br>
+    <%= f.label :password_confirmation, "确认密码：" %>
     <%= f.password_field :password_confirmation%></br>
   </p>
-  <%= f.submit 'Create' %>
+  <%= f.submit '修改' %>
 <% end %>
-

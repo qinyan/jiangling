@@ -14,6 +14,9 @@ gem 'simple_form'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 
+# page
+
+gem 'will_paginate'
 
 # Gems used only for assets and not required
 # in production environments by default.
