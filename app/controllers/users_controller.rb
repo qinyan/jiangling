@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  skip_before_filter :require_login
+
   def index
     @users = User.paginate page: params[:page]||1, per_page: 10
   end

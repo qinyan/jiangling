@@ -26,13 +26,13 @@
         <% @users.each do |user| %>
           <li>
             <p class="img"><%= image_tag user.logo_url(:medium), size: '90x100' %></p>
-            <p><%= user.username %></p>
+            <p><%= user.name %></p>
           </li>
         <% end -%>
         <% @users.each do |user| %>
           <li>
             <p class="img"><%= image_tag user.logo_url(:medium), size: '90x100' %></p>
-            <p><%= user.username %></p>
+            <p><%= user.name %></p>
           </li>
         <% end -%>
       </ul>

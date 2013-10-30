@@ -39,8 +39,8 @@ gem 'jquery-rails'
 gem 'ckeditor'
 
 # css
-gem "therubyracer"
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+# gem "therubyracer"
+# gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 
 # 文件和图片处理
@@ -48,6 +48,15 @@ gem 'carrierwave'
 gem 'mini_magick', '3.5.0'
 # 无损压缩
 gem 'piet'
+
+group :development, :test do
+
+  #测试
+  # gem 'rspec'
+  gem 'rspec-rails'
+  gem 'accept_values_for'
+
+end
 
 
 

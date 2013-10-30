@@ -11,10 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131029055135) do
+ActiveRecord::Schema.define(:version => 20131030033439) do
+
+  create_table "albums", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "blogs", :force => true do |t|
-    t.string   "user_id"
+    t.integer  "user_id"
     t.string   "name"
     t.string   "intro"
     t.text     "content"
@@ -38,6 +43,11 @@ ActiveRecord::Schema.define(:version => 20131029055135) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
+  create_table "photos", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "products", :force => true do |t|
     t.string   "name"
     t.integer  "price"
@@ -47,14 +57,15 @@ ActiveRecord::Schema.define(:version => 20131029055135) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "user_infos", :primary_key => "user_id", :force => true do |t|
+  create_table "user_infos", :force => true do |t|
+    t.integer  "user_id"
     t.text     "contact"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "user_login_auths", :force => true do |t|
-    t.string   "user_id"
+    t.integer  "user_id"
     t.string   "site"
     t.string   "site_uid"
     t.text     "info"
@@ -63,7 +74,8 @@ ActiveRecord::Schema.define(:version => 20131029055135) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "user_logins", :primary_key => "user_id", :force => true do |t|
+  create_table "user_logins", :force => true do |t|
+    t.integer  "user_id"
     t.string   "email"
     t.string   "password"
     t.datetime "created_at", :null => false
@@ -71,13 +83,13 @@ ActiveRecord::Schema.define(:version => 20131029055135) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username"
+    t.string   "name"
+    t.string   "gender"
+    t.string   "logo"
     t.string   "email"
     t.string   "password"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "logo"
-    t.string   "gender"
   end
 
   create_table "versions", :force => true do |t|

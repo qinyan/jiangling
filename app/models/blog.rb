@@ -1,7 +1,7 @@
 #coding utf-8
 class Blog < ActiveRecord::Base
   # attr_accessible :title, :body
-  acts_as_global_primary_key
+  # acts_as_global_primary_key
   belongs_to :user
   before_save :add_intro
 

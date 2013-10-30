@@ -9,7 +9,7 @@ class HomeController < ApplicationController
   end
   
   def login
-    user = User.where(username: params[:username], password: params[:password]).first
+    user = User.where(name: params[:name], password: params[:password]).first
     set_current_user(user) and redirect_to root_path if user.present?
   end
   
