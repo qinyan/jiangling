@@ -1,31 +1,5 @@
-<style type="text/css">
-  .field_with_errors {
-    display: inline;
-  }
-  
-  .field_with_errors .message {
-    color: #D00;
-    padding-left: 5px;
-    font-size: 12px;
-  }
-</style>
-<h1>修改用户信息</h2>
-<%= form_for @user, :validate => true do |f| %>
-  <p>
-    <%= f.label :username, '用户姓名：' %>
-    <%= f.text_field :username%></br>
-  </p>
-  <p>
-    <%= f.label :email, '邮箱号码：' %>
-    <%= f.text_field :email%></br>
-  </p>
-  <p>
-    <%= f.label :password, '设置密码：' %>
-    <%= f.password_field :password%></br>
-  </p>
-  <p>
-    <%= f.label :password_confirmation, "确认密码：" %>
-    <%= f.password_field :password_confirmation%></br>
-  </p>
-  <%= f.submit '修改' %>
-<% end %>
+<% content_for :header do %>
+  <%= stylesheet_link_tag '/stylesheets/form'%>
+<% end -%>
+<h2>修改用户信息</h2>
+<%= render 'form' %>

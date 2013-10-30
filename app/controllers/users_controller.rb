@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.paginate page: params[:page]||1, per_page: 10
   end
@@ -8,9 +9,10 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      redirect_to users_path
+    user = User.new(params[:user])
+    if user.save
+      set_current_user(user)
+      redirect_to root_path
     end
   end
   
@@ -33,4 +35,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     redirect_to users_path if @user.destroy
   end
+
+
 end

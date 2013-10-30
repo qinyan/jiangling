@@ -1,6 +1,7 @@
 # coding: utf-8
 class User < ActiveRecord::Base
-  attr_accessible :username, :email, :password, :password_confirmation
+  #default_scope  where(username: 'qinyan')
+  # attr_accessible :username, :email, :password, :password_confirmation
   acts_as_global_primary_key
  # validates :username, :presence => { :message => '请输入中文姓名'}
  # validates :email, :presence => { :message => "请填写联系邮箱" }
@@ -19,4 +20,12 @@ class User < ActiveRecord::Base
   # validates_email :email  :user_info
   has_one  :user_login
   has_many :user_auths, :class_name => 'UserLoginAuth'
+  has_many :blogs
+  has_paper_trail
+  mount_uploader :logo, UserLogoUploader
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  
+  def cropping?
+    !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
+  end
 end

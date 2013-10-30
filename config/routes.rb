@@ -1,9 +1,21 @@
 Qinyan::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+
  # get 'join' => 'user#index', :as => 'users'
+  root :to => 'home#index'
+  match 'login' =>'home#login', as: 'login'
+  match 'logout' => 'home#logout', as: 'logout'
+  resources :products
+  resources :users do
+    collection do
+      match :login, via: [:get, :post]
+      get :logout
+    end
+  end
+
+  resources :blogs
   
-  # get "product/index"
-  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

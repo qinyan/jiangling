@@ -9,7 +9,7 @@ gem 'rails', '3.2.12'
 gem 'mysql2'
 gem 'jquery-rails'
 
-# form
+# form and validate
 gem 'simple_form'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
@@ -17,6 +17,9 @@ gem 'client_side_validations-simple_form'
 # page
 
 gem 'will_paginate'
+
+#版本管理
+gem 'paper_trail'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -31,6 +34,22 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+#副文本
+gem 'ckeditor'
+
+# css
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+
+# 文件和图片处理
+gem 'carrierwave'
+gem 'mini_magick', '3.5.0'
+# 无损压缩
+gem 'piet'
+
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

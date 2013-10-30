@@ -6,7 +6,9 @@ module ActsAsGlobalPrimaryKey
   end
 
   MODEL_ID_MAPPING = {
-      :user                   => 1
+      :user                   => 1,
+      :blog                   => 2,
+      :product                => 8
   }
   # {model_id}{model_shard}-{timestamp(since 20110101)}-{rand}
   # all numbers formatted as hex

@@ -1,0 +1,13 @@
+<style type="text/css">
+  h3 a{
+    color: #3D79CC;
+    font-size: 14px;
+  }
+</style>
+<div class="contenter">
+  <% @products.each do |product| %>
+    <h3><%= link_to product.name, product_path(product) %></h3>
+    <p><%= product.description %></p>
+  <% end -%>
+</div>
+<%= will_paginate @products%>
