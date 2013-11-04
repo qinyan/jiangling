@@ -1,8 +1,10 @@
 class ProductsController < ApplicationController
   
   skip_before_filter :require_login
+  before_filter :load_product, only: [:show, :update, :edit, :destroy]
+
   def index
-    @products = Product.paginate page: params[:page]||1, per_page: 10
+    @products = Product.paginate page: params[:page]||1, per_page: 1
   end
 
   def new
@@ -11,20 +13,35 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(params[:product])
-    redirect_to product_path(@product) if @product.save
+    if @product.save
+      redirect_to products_path
+    else
+      render :new
+    end
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def update
+    if @product.update_attributes(params[:product])
+      redirect_to product_path(@product)
+    else
+      render :edit
+    end
   end
 
   def edit
   end
 
-  def destroy
+  def destroy    
+    redirect_to products_path  if @product.destroy
+  end
+
+  private
+
+  def load_product
+    @product = Product.find(params[:id])
   end
   
 end

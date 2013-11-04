@@ -57,6 +57,13 @@ group :development, :test do
   gem 'accept_values_for'
 
 end
+group :test do
+  #测试数据
+  # gem 'fabrication'
+  # gem 'factory_girl'
+  gem 'factory_girl_rails'
+
+end
 
 
 

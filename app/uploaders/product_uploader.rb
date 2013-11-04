@@ -14,7 +14,7 @@ class ProductUploader < CarrierWave::Uploader::Base
   process :optimize
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -43,7 +43,7 @@ class ProductUploader < CarrierWave::Uploader::Base
   version :originals do
   end
 
-  version :originals1 do
+  version :lager do
     process :resize_and_pad => [690, 480, '#FFFFFF', 'center']
     process :resize_to_fill => [230, 160]
   end
@@ -52,7 +52,7 @@ class ProductUploader < CarrierWave::Uploader::Base
   #   process :scale => [230, 160]
   # end
 
-  version :originals2 do
+  version :small do
     #process :manualcrop
     process resize_to_fill: [200, 200]
   end

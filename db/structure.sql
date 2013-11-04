@@ -14,7 +14,7 @@ CREATE TABLE `blogs` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `ckeditor_assets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -31,7 +31,7 @@ CREATE TABLE `ckeditor_assets` (
   PRIMARY KEY (`id`),
   KEY `idx_ckeditor_assetable_type` (`assetable_type`,`type`,`assetable_id`),
   KEY `idx_ckeditor_assetable` (`assetable_type`,`assetable_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `photos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -49,7 +49,7 @@ CREATE TABLE `products` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `schema_migrations` (
   `version` varchar(255) NOT NULL,
@@ -97,7 +97,7 @@ CREATE TABLE `users` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `versions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -109,7 +109,7 @@ CREATE TABLE `versions` (
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_versions_on_item_type_and_item_id` (`item_type`,`item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 INSERT INTO schema_migrations (version) VALUES ('20130709100946');
 
