@@ -13,4 +13,4 @@
     <p><%= blog.intro.html_safe %></p>
   <% end -%>
 </div>
-<%= will_paginate @blogs%>
+<%= will_paginate @blogs, :previous_label=> '« 上一页', :next_label => '下一页 »'%>

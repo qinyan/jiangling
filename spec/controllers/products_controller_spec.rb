@@ -2,145 +2,108 @@ require 'spec_helper'
 
 describe ProductsController do
 
-  describe "Get index" do
-
-    it "has a 200 status code" do
-      get :index
-      expect(response.status).to eq(200)
-    end
-
-    it "doesn't matter" do
-      @product1 = FactoryGirl.create(:product)
-      @product2 = FactoryGirl.create(:product)     
-      get :index
-      assigns[:products].should == [@product1]
-      response.should render_template :index
-    end
-  end
-  
-  describe "Get show" do
-
-    before :each do
-      @product = FactoryGirl.create(:product)
-    end
-
-    it "assigns @product" do
-      get :show, :id => @product.id
-      assigns[:product].should == @product
-    end
-
-    it "render template" do
-      get :show, :id => @product.id
-      response.should render_template :show
-    end
-  end
-
   describe "Get new" do
-    it "assigns @product" do
+    before do
       product = FactoryGirl.build(:product)
       get :new
-      assigns[:product].should be_new_record
-      assigns[:product].should be_instance_of(Product)
     end
-
+    it "assigns @product" do
+      expect(assigns[:product]).to be_new_record
+      expect(assigns[:product]).to be_instance_of(Product)
+    end
     it "render template" do
-      product = FactoryGirl.build(:product)
-      get :new
       response.should render_template :new
     end
   end
 
   describe "Post create" do
-
     context "when product doesn't have name" do
-
       it "doesn't create a record" do
-        expect{post :create, :product => {:price => '12'}}.to change{Product.count}.by(0)
+        expect{post :create, product: FactoryGirl.attributes_for(:product, name: '')}.to change{Product.count}.by(0)
       end
-
       it "render template new" do
-        post :create, :product => {:price => '12'}
-        response.should render_template :new
+        post :create, product: FactoryGirl.attributes_for(:product, name: '')
+        expect(response).to render_template(:new)
       end
     end
-
     context "when product have name" do
-
       it "create new product record " do
-        product = FactoryGirl.build(:product)
-        expect{ post :create, :product => FactoryGirl.attributes_for(:product)}.to change{Product.count}.by(1)
+        expect{ post :create, product: FactoryGirl.attributes_for(:product)}.to change{Product.count}.by(1)
       end
-
       it "redirect_to prodcuts_path" do
-        product = FactoryGirl.build(:product)
-        post :create, :product => FactoryGirl.attributes_for(:product)
-        response.should redirect_to products_path
+        post :create, product:  FactoryGirl.attributes_for(:product)
+        expect(response).to redirect_to(products_path)
       end
     end
   end
 
-  describe "Get edit" do
-    it "assigns @product" do
-      product = FactoryGirl.create(:product)
-      get :edit, :id => product.id
-      assigns[:product].should == product
-    end
+  context 'create product before' do
 
-    it "render template" do
-      product = FactoryGirl.create(:product)
-      get :edit, :id => product.id
-      response.should render_template :edit
-    end
-  end
+    before {@product = FactoryGirl.create(:product)}
 
-  describe "Put update" do
-
-    context "when product params doesn't have name" do
-      it "doesn't update a record" do
-        product = FactoryGirl.create(:product)
-        put :update , :id => product.id , :product => { :name => nil, :description => "sometext"}
-        product.description.should_not == "sometext"
+    describe "Get index" do
+      before do
+        @product2 = FactoryGirl.create(:product)
+        get :index
       end
-
-      it "render edit template" do
-        product = FactoryGirl.create(:product)
-        put :update , :id => product.id , :product => { :name => nil, :description => "sometext"}
-        response.should render_template :edit
+      it "has a 200 status code" do
+        expect(response.status).to eq(200)
+      end
+      it "doesn't matter" do   
+        expect(assigns[:products]).to match_array([@product,@product2])
+      end
+      it "render template index" do
+        expect(response).to render_template(:index)
       end
     end
 
-    context "when product params have name" do
-      it "update a record" do
-        product = FactoryGirl.create(:product)
-        put :update , :id => product.id , :product => { :name => "sometitle", :description => "sometext"}
-        product.description.should_not == "sometext"
+    %w(show edit).each do |type|
+      describe "Get #{type}" do
+        before {get type.to_sym, id: @product.id}
+        it "assigns @product" do
+          expect(assigns[:product]).to eq(@product)
+        end
+        it "render template" do
+          expect(response).to render_template(type.to_sym)
+        end
       end
-      it "redirect_to product_path" do
-        product = FactoryGirl.create(:product)
-        put :update , :id => product.id , :product => { :name => "sometitle", :description => "sometext"}
-        response.should redirect_to product_path(product)
+    end
+
+    describe "Put update" do
+      context "when product params doesn't have name" do
+        before {put :update , id: @product.id , product: FactoryGirl.attributes_for(:product, name: '', description: 'sometext')}
+        it "doesn't update a record" do
+          expect(Product.find(@product.id).description).to_not eq('sometext')   
+        end
+        it "render edit template" do
+          expect{response}.to render_template(:edit)
+        end
+      end
+      context "when product params have name" do
+        before {put :update , id: @product.id , product: FactoryGirl.attributes_for(:product, description: 'sometext')}
+        it "update a record" do
+          expect(Product.find(@product.id).description).to eq('sometext') 
+        end
+        it "redirect_to products_path" do
+          expect{response}.to redirect_to(products_path)
+        end
       end
     end
 
-  end
-
-  describe "Delete destroy" do
-    it "assigns @product" do
-      product = FactoryGirl.create(:product)
-      delete :destroy, :id => product.id
-      assigns[:product].should == product
+    describe "Delete destroy" do
+      it "assigns @product" do
+        delete :destroy, id: @product.id
+        expect(assigns[:product]).to eq(@product)
+      end
+      it "delete a record" do
+        expect{delete :destroy, id: @product.id}.to change{ Product.count}.by(-1)
+      end
+      it "redirect_to products_path" do
+        delete :destroy, id: @product.id
+        expect{response}.to redirect_to(products_path)
+      end
     end
 
-    it "delete a record" do
-      product = FactoryGirl.create(:product)
-      expect{delete :destroy, :id => product.id}.to change{ Product.count}.by(-1)
-    end
-
-    it "redirect_to products_path" do
-      product = FactoryGirl.create(:product)
-      delete :destroy, :id => product.id
-      expect{response}.to redirect_to(products_path)
-    end
   end
 
 end

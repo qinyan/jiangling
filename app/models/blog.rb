@@ -6,7 +6,7 @@ class Blog < ActiveRecord::Base
   before_save :add_intro
 
   def add_intro
-    self.intro = self.content.gsub(/&nbsp;/, '').gsub(/<.*?>/, '').truncate(255, :omission=>'...') if self.content.present?
+    self.intro = self.content.gsub(/&nbsp;/, '').gsub(/<.*?>/, '').truncate(210, :omission=>'...') if self.content.present?
     # self.intro = self.content.squish.truncate(255, :omission=>'...') if self.content.present?
   end
 

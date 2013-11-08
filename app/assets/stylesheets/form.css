@@ -11,6 +11,9 @@
 .span9 div.contenter .blog_list_tit span {float: right; margin-top: -30px;padding: 0;}
 .span9 div.contenter .blog_list_tit span a{color:#7E7E7E; cursor: pointer; float: left; margin-left: 10px;}
 
+.span9 div.contenter .product_list_tit span {float: right; margin-top: -40px;padding: 0;}
+.span9 div.contenter .product_list_tit span a{color:#7E7E7E; cursor: pointer; float: left; margin-left: 10px;}
+
 .span9 h3 a{color: #3D79CC;font-size: 14px;}
 
 span a em {cursor: pointer;float: left;}
@@ -37,6 +40,10 @@ span a em.ban_1_2 {background-position: -140px -61px;}
 .span3 .sidebar-nav .user_info{float: left; width: 100px}
 .span3 .sidebar-nav .user_info p{font-size: 16px; margin-top: 4px; padding-left: 14px;}
 .span3 .sidebar-nav ul.nav-list{clear: both;}
+
+
+.pagination span.disabled {border: 1px solid #CCCCCC;color: #D1D1D1;margin: 2px;padding: 2px 5px;}
+.pagination a {border: 1px solid #999999;color: #666666; margin: 2px;padding: 2px 5px;text-decoration: none;}
 
 .container footer{margin-top: 40px}
 

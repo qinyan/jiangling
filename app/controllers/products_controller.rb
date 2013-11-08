@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   before_filter :load_product, only: [:show, :update, :edit, :destroy]
 
   def index
-    @products = Product.paginate page: params[:page]||1, per_page: 1
+    @products = Product.paginate page: params[:page]||1, per_page: 10
   end
 
   def new
@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update_attributes(params[:product])
-      redirect_to product_path(@product)
+      redirect_to products_path
     else
       render :edit
     end

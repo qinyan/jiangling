@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
 
   before_filter :load_blog, only: [:show, :update, :edit, :destroy]
-  skip_before_filter :require_login
+  skip_before_filter :require_login, only: [:index, :show]
   before_filter :check_blog_user, only: [:edit, :update, :destroy]
 
   def index
@@ -14,7 +14,11 @@ class BlogsController < ApplicationController
 
   def create
     @blog = @current_user.blogs.build(params[:blog])
-    redirect_to blogs_path  if @blog.save
+    if @blog.save
+      redirect_to blogs_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -26,6 +30,8 @@ class BlogsController < ApplicationController
   def update
     if @blog.update_attributes(params[:blog])
       redirect_to blogs_path
+    else
+      render :edit
     end
   end
 

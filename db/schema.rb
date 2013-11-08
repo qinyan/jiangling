@@ -57,31 +57,6 @@ ActiveRecord::Schema.define(:version => 20131030033439) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "user_infos", :force => true do |t|
-    t.integer  "user_id"
-    t.text     "contact"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "user_login_auths", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "site"
-    t.string   "site_uid"
-    t.text     "info"
-    t.datetime "expired_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "user_logins", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "email"
-    t.string   "password"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "gender"
