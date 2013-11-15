@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_paper_trail
   mount_uploader :logo, UserLogoUploader
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  delegate :intro, :to => :blog
   
   def cropping?
     !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
