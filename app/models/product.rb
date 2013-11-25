@@ -1,3 +1,4 @@
+# coding: utf-8
 class Product < ActiveRecord::Base
   # attr_accessible :description, :name
   # acts_as_global_primary_key
