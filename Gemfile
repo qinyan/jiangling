@@ -5,7 +5,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # db
-# gem 'mysql2'
+gem 'mysql2'
 gem 'jquery-rails'
 
 # form and validate
