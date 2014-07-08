@@ -10,11 +10,12 @@ require 'mina/git'
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :user, 'tangl'
-set :domain, '192.168.0.211'
-set :deploy_to, '/Users/tangl/mina'
-set :repository, 'git@10.20.30.14:cms/yginfo.git'
+set :domain, '112.124.24.10'
+set :user, 'lzj'
+set :deploy_to, '/home/lzj/tl/mina'
+set :repository, 'git@github.com:qinyan/jiangling.git'
 set :branch, 'master'
+set :rails_env, 'development'
 # set :domain, 'foobar.com'
 # set :deploy_to, '/var/www/foobar.com'
 # set :repository, 'git://...'
