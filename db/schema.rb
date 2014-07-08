@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131030033439) do
+ActiveRecord::Schema.define(:version => 20140529060410) do
 
   create_table "albums", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "blogs", :force => true do |t|
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20131030033439) do
     t.string   "name"
     t.string   "intro"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -36,14 +36,26 @@ ActiveRecord::Schema.define(:version => 20131030033439) do
     t.string   "type",              :limit => 30
     t.integer  "width"
     t.integer  "height"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
+  create_table "groups", :force => true do |t|
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.boolean  "accept",     :default => false,  :null => false
+    t.string   "state",      :default => "wait", :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
   create_table "photos", :force => true do |t|
+    t.integer  "album_id"
+    t.string   "name"
+    t.string   "avatar"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -53,8 +65,8 @@ ActiveRecord::Schema.define(:version => 20131030033439) do
     t.integer  "price"
     t.string   "image"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
@@ -63,8 +75,8 @@ ActiveRecord::Schema.define(:version => 20131030033439) do
     t.string   "logo"
     t.string   "email"
     t.string   "password"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "versions", :force => true do |t|

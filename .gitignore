@@ -21,3 +21,4 @@
 #/*.log
 public/upload
 public/uploads
+.DS_Store

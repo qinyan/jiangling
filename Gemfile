@@ -1,6 +1,6 @@
 source 'http://ruby.taobao.org'
 
-gem 'rails', '3.2.15'
+gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -32,7 +32,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+#定时任务
+gem 'whenever', :require => false
+#部署
+gem 'mina'
 
 #副文本
 gem 'ckeditor'
@@ -45,6 +48,8 @@ gem "twitter-bootstrap-rails"
 # 文件和图片处理
 gem 'carrierwave'
 gem 'mini_magick', '3.5.0'
+gem "jquery-fileupload-rails"  
+gem 'paperclip'
 # 无损压缩
 gem 'piet'
 
