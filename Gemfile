@@ -6,7 +6,6 @@ gem 'rails', '3.2.13'
 
 # db
 gem 'mysql2'
-gem 'sqlite3'
 gem 'jquery-rails'
 
 # form and validate
@@ -53,6 +52,7 @@ gem "jquery-fileupload-rails"
 gem 'paperclip'
 # 无损压缩
 gem 'piet'
+gem 'thin'
 
 group :development, :test do
 
