@@ -55,7 +55,7 @@ end
 # They will be linked in the 'deploy:link_shared_paths' step.
 # this will link the file to relative floder
 # set :shared_paths, ['config/database.yml','config/thin.yml','config/config.yml','config/mongoid.yml', 'log', 'tmp/pids']
-set :shared_paths, ['config/database.yml', 'log']
+set :shared_paths, ['config/database.yml', 'log','config/thin.yml']
 # Optional settings:
   # set :port, '30000'     # SSH port number.
 
@@ -98,6 +98,8 @@ task :deploy => :environment do
     to :launch do
       queue! "bundle exec thin -C config/thin.yml stop"
       queue! "bundle exec thin -C config/thin.yml start"
+      queue! "cd #{deploy_to}/current && whenever --write-crontab #{deploy_to}/current"
+      queue! "cd #{deploy_to}/current && whenever --update-crontab #{deploy_to}/current"
     end
   end
 end
