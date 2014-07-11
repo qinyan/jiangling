@@ -98,6 +98,7 @@ task :deploy => :environment do
     to :launch do
       queue! "bundle exec thin -C config/thin.yml stop"
       queue! "bundle exec thin -C config/thin.yml start"
+      
       queue! "cd #{deploy_to}/current && whenever --write-crontab #{deploy_to}/current"
       queue! "cd #{deploy_to}/current && whenever --update-crontab #{deploy_to}/current"
     end
