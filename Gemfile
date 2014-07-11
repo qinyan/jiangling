@@ -20,6 +20,10 @@ gem 'will_paginate'
 #版本管理
 gem 'paper_trail'
 
+
+#权限管理
+gem "rolify"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

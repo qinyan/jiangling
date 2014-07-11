@@ -5,5 +5,6 @@ namespace :jiangling do
     f = File.open('test_whenever.txt', 'w')
     f.puts Time.now
     f.puts 'hello words!'
+    f.close
   end
 end

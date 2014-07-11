@@ -1,3 +1,4 @@
 class Album < ActiveRecord::Base
   # attr_accessible :title, :body
+  resourcify
 end

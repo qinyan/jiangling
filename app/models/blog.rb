@@ -2,6 +2,8 @@
 class Blog < ActiveRecord::Base
   # attr_accessible :title, :body
   # acts_as_global_primary_key
+  resourcify
+  
   belongs_to :user
   before_save :add_intro
   delegate :email, :to => :user
